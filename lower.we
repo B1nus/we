@@ -1,0 +1,37 @@
+# No generics in user types.
+
+# Generic code
+add(number1, number2)
+	return number1 + number2
+
+add(thing1, thing2)
+	return thing1.length + thing2.length # Will work for any type that has a length field.
+
+# The compiler handles finding and choosing the function that works.
+
+# I think this just works. It's really general code.
+map(mut list, changer)
+	i = 1
+	repeat list.length
+		set(mut list, i, changer(get(list, i)))
+		i = i + 1
+# Only use mut in function calls/declarations?
+
+# No comptime?
+
+# You either write the entire type or no type
+
+# Builting types
+signed	 	s32, s27, s12345 etc...
+unsigned	u32, u7, u1234567
+float		f32, f64
+boolean		bool
+function 	(s63, s7) s3, u1
+array		[123456 u8]
+list		[s68]
+set		{s99}
+map		{s44:s33}
+
+Parse {} and ask to fix the code
+Parse : and ask to fix (python blocks, type in zig/rust/...)
+thing.method() ask to fix
