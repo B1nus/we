@@ -1,0 +1,5 @@
+No methods, only functions
+Mut for function arguments only
+Recursive type definitions
+Automatic helper for syntax errors
+No "!=" or "=="

@@ -1,0 +1,7 @@
+x = 1 + 2.3 # f64
+t = 2 # s64
+
+# Automatic fix:
+# z f64 = t
+# assert(x == z)
+assert(x == t) # Error, with automatic fix

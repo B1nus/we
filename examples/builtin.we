@@ -52,7 +52,7 @@ variant key
     left_mouse
     right_mouse
     middle_mouse
-    windows
+    super
     
 is_pressed(key key) bool
 pressed() [key]
@@ -83,45 +83,46 @@ hash(_) u64 # Hash anything
 .length() u64
 .clear()
 
-{_}
-.add(value _)
-.remove(value)
-.join(other {_}) 
-.joined(other {_}) {_}
-.subtract(other {_})
-.subtracted(other {_}) {_}
-.retain(other {_})
-.retained(other {_}) {_}
-.list() [_]
-.length() u64
-.clear()
+# {_}
+# .add(value _)
+# .remove(value)
+# .join(other {_}) 
+# .joined(other {_}) {_}
+# .subtract(other {_})
+# .subtracted(other {_}) {_}
+# .retain(other {_})
+# .retained(other {_}) {_}
+# .list() [_]
+# .length() u64
+# .clear()
+# 
+# {_:_}
+# .set(key _, value _) # Clone the key and value
+# .get(key _) _ # "Did you mean to use .get()?" If a user tries indexing syntax.
+# .keys() [_]
+# .remove(key _)
+# .length() u64
+# .clear()
 
-{_:_}
-.set(key _, value _) # Clone the key and value
-.get(key _) _ # "Did you mean to use .get()?" If a user tries indexing syntax.
-.keys() [_]
-.remove(key _)
-.length() u64
-.clear()
-
-assert((pi - 3.14159).absolute() < 0.0001)
-assert((e - 2.71828).absolute() < 0.0001)
+exp(s64) f64
 
 char u8 = 'u'
 string [u8] = "hello"
 number s64 = 123
 
 # integers:
+    _.shift_left(u8) _
+    _.shift_right(u8) _
     _.rotated_left(u8) _ # Error "Did you mean rotateD_left()?" auto fix? maybe?
     _.rotated_right(u8) _ # Error "Did you mean rotateD_left()?" auto fix? maybe?
-    xor(_, _) _
-    or(_, _) _
-    and(_, _) _
-    _.inverted() _
+    _.bitwise_xor(_) _
+    _.bitwise_or(_) _
+    _.bitwise_and(_) _
+    _.bitwise_not() _
     _.leading_zeros() u8 # Error trailing_zeroEs "Did you mean trailing_zeros()?" auto fix? maybe?
     _.trailing_zeros() u8
     _.ones() u8
-    %
+    _.remainder(_) _
 # signed integers:
     s_.absolute() u_
     s_.sign() s_ # -1, 0 or 1
@@ -145,3 +146,24 @@ number s64 = 123
     +
     -
     *
+shift_left(int, distance u8)
+shift_right(int, distance u8)
+rotate_left(int, distance u8)
+rotate_right(int, distance u8)
+and(int, other)
+xor(int, other)
+or(int, other)
+not(int)
+leading_zeros(int) u8
+trailing_zeros(int) u8
+ones(int) u8
+remainder(int, other)
+absolute(int)
+reinterpret(number) # Don't change the bits. just change the type.
+
++, -, *, /
+and, or, xor, not, <, >, <=, >=, = # Autofix a != b to not a = b and a not = b to not a = b
+
+# std functions
+exp(x f64) f64
+pow(a, b)

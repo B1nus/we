@@ -1,0 +1,12 @@
+variant expression
+    neg expression # Under the hood it's using a pointer. So it's fine.
+    add [expression]
+    sub [expression]
+    num u64
+
+five = expression.num 5
+four = expression.num 4
+three = expression.num 3
+
+add = expression.add [ four, five ]
+sub = expression.sub [ five, add ]

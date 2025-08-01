@@ -1,0 +1,31 @@
+variant value
+	add [2 value] # +
+	subtract [2 value] # -
+	divide [2 value] # /
+	multiply [2 value] # *
+	equal [2 value] # = # Auto fix == and != in the parser
+	less [2 value]
+	more [2 value]
+	less_equal [2 value]
+	more_equal [2 value] # 
+	and [2 value] # and
+	xor [2 value] # xor
+	or [2 value] # or
+	not value # not
+	var [u8]
+	field field_access
+	call call
+
+# all operators as functions as well to be used in functions. No operator overloading. Fuck you.
+
+record call
+	function value
+	args [arg]
+
+record arg
+	mutable bool
+	value value
+
+record field_access
+	value value
+	field [u8]
